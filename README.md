@@ -1,4 +1,4 @@
-# EX-21-POINTERS
+EX-21-POINTERS
 # AIM:
 Write a C program to convert a 23.65 into 25 using pointer
 
@@ -9,23 +9,35 @@ Write a C program to convert a 23.65 into 25 using pointer
 4.	Print the modified value.
 
 ## PROGRAM:
-```c
-#include <stdio.h>
-int main() {
-    float num = 23.65;
-    float *ptr = &num;
-    printf("Original number: %.2f\n", *ptr);
-    *ptr = 25.0;
-    printf("Modified number: %.2f\n", *ptr);
-    return 0;
-}
 ```
+ #include <stdio.h>
+ int main() {
+ double num = 23.65; 
+double *ptr = &num; 
+*ptr = 25.0;
+ printf("Modified value: %.2f\n", num);
+ return 0;
+ }
+ ```
 ## OUTPUT:
-![Screenshot 2025-04-27 153034](https://github.com/user-attachments/assets/04494f21-459e-4559-889a-bd8cbe17b24d)
+ 	
+![image](https://github.com/user-attachments/assets/8dcfadff-fb1d-473e-8067-a33fddfef413)
+
+
+
+
+
+
+
+
+
+
 
 ## RESULT:
 Thus the program to convert a 23.65 into 25 using pointer has been executed successfully.
  
+ 
+
 
 # EX-22-FUNCTIONS AND STORAGE CLASS
 
@@ -43,30 +55,32 @@ Write a C program to calculate the Product of first 12 natural numbers using Rec
 6.	Print the result, indicating it is the product of the first 12 natural numbers.
 
 ## PROGRAM:
-```c
-#include <stdio.h>
-unsigned long long product(int n) {
-    if (n == 1) {
-        return 1;
-    } else {
-        return n * product(n - 1);
-    }
-}
-int main() {
-    int n = 12;
-    unsigned long long result;
-    result = product(n);
-    printf("Product of first 12 natural numbers is: %llu\n", result);
-    return 0;
-}
 ```
+ #include <stdio.h>
+ unsigned long long calculateProduct(int n) {
+ if (n == 1) {
+ return 1;
+ }
+  return n * calculateProduct(n - 1); 
+}
+ int main() {
+ int n = 12; 
+unsigned long long product;
+ product = calculateProduct(n);
+ printf("The product of first %d natural numbers is: %llu\n", n, product);
+ return 0;
+ }
+ ```
 ## OUTPUT:
-![Screenshot 2025-04-27 153157](https://github.com/user-attachments/assets/f9b6bfcc-6e11-4fdb-80de-5dbd210335f8)
+
+![image](https://github.com/user-attachments/assets/5da75e38-8a6e-4364-a753-68899c84bd6a)
 
 ## RESULT:
 
 Thus the program has been executed successfully.
  
+ 
+
 
 # EX-23-ARRAYS AND ITS OPERATIONS
 
@@ -82,38 +96,40 @@ Write C Program to find Sum of each row of a Matrix
 4.	Print the sum for each row.
 
 ## PROGRAM:
-```c
-#include<stdio.h>
-int main()
-{
-    int m,n,i,j;
-    scanf("%d %d",&m,&n);
-    int arr[m][n];
-    for (i=0;i<m;i++){
-        for (j=0;j<n;j++){
-            scanf("%d",&arr[i][j]);
+```
+ #include <stdio.h>
+ int main() {
+    int rows, cols;
+    printf("Enter number of rows and columns: ");
+    scanf("%d %d", &rows, &cols);
+    int matrix[rows][cols];
+    printf("Enter matrix elements:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            scanf("%d", &matrix[i][j]);
         }
     }
     printf("Sum of each row:\n");
-    for (i=0;i<m;i++){
-        int sum=0;
-        for (j=0;j<n;j++){
-            sum+=arr[i][j];
+    for (int i = 0; i < rows; i++) {
+        int rowSum = 0;
+        for (int j = 0; j < cols; j++) {
+            rowSum += matrix[i][j]; 
         }
-        printf("Row %d sum = %d\n",i+1,sum);
+ printf("Row %d sum: %d\n", i + 1, rowSum);
     }
-    return 0;
-}
+ return 0;
+ }
 ```
+## OUTPUT
 
+![image](https://github.com/user-attachments/assets/ecad5202-790c-44e9-9d2b-c7ef4a15d3ca)
 
-## OUTPUT:
-![Screenshot 2025-04-27 153309](https://github.com/user-attachments/assets/5fb8bee3-56ed-4a02-97d2-f6bb9bee9137)
-
+ 
+ 
 
  ## RESULT
-
-Thus the C program to String process executed successfully
+ 
+Thus the program to find Sum of each row of a Matrix has been executed successfully.
 
 # EX-24-STRINGS
 
@@ -130,37 +146,58 @@ Write C program for the below pyramid string pattern. Enter a string: PROGRAM En
 5.	End the program.
 
 ## PROGRAM:
-```c
+```
 #include <stdio.h>
 #include <string.h>
+
 int main() {
     char str[100];
-    int num_rows, i, j, midpoint, len;
     scanf("%s", str);
-    scanf("%d", &num_rows);
-    len = strlen(str);
-    midpoint = (2 * num_rows - 1) / 2;
-    for(i = 1; i <= num_rows; i++) {
-        for(j = 1; j <= num_rows - i; j++) {
+    int num_rows;
+   // printf("Enter number of rows: ");
+   // scanf("%d", &num_rows);
+
+   // int len = strlen(str);
+    int sp = 10;
+    int k = 0;
+    int y = 0;
+
+    for (int i = 1; i <= 5; i++) {
+        for (int space = 1; space <= sp; space++) {
             printf(" ");
         }
-        for(j = 0; j < len; j++) {
-            printf("%c ", str[j]);
+
+        for (int j = 0; j <= y; j++) {
+            printf("%c", str[k]);
+            k++;
+            if (str[k] == '\0')
+                k = 0;
         }
+
         printf("\n");
+        sp -= 1;
+        y += 2;
     }
+
     return 0;
 }
-```
 
- ## OUTPUT:
-![Screenshot 2025-04-27 153400](https://github.com/user-attachments/assets/33d53f4c-6251-4fbe-8091-08b4d3bacfbd)
 
- 
+ ```
+ ## OUTPUT
+
+![image](https://github.com/user-attachments/assets/cc41b3af-ff8d-492b-a443-b19bca71d583)
+
+
 
 ## RESULT
 
-Thus the C program to String process executed successfully.
+Thus the C program to String process executed successfully
+ 
+
+ 
+.
+
 
 
 # EX -25 –DISPLAYING ARRAYS USING POINTERS
@@ -183,34 +220,26 @@ Step 5: Loop from i = 0 to i < n:
 Step 6: End the program.
 
 ## PROGRAM
-```c
-#include <stdio.h>
-int main() {
-	int arr[10];
-	int *parr;
-	int i, n;
-
-	parr = arr;
-	scanf("%d", &n);
-
-	if (n > 10) {
-		printf("Please enter up to 10 elements only.\n");
-		return 1;
-	}
-	for(i = 0; i < n; i++) {
-		scanf("%d", (parr + i));
-	}
-	printf("The array elements are:\n");
-	for(i = 0; i < n; i++) {
-		printf("%d ", *(parr + i));
-	}
-	printf("\n");
-	return 0;
-}
 ```
+ #include <stdio.h>
+ int main() {
+    int arr[6]; 
+    int *parr = arr;
+    printf("Enter 6 integer elements:\n");
+    for (int i = 0; i < 6; i++) {
+        scanf("%d", (parr + i)); 
+    }
+    printf("Array elements are:\n");
+    for (int i = 0; i < 6; i++) {
+        printf("%d ", *(parr + i)); 
+    }
+    printf("\n");
+     return 0;
+ }
+ ```
+## OUTPUT
 
-## OUTPUT:
-![Screenshot 2025-04-27 153500](https://github.com/user-attachments/assets/796a948f-7831-4981-90bb-77a091fcbf80)
+ ![image](https://github.com/user-attachments/assets/0598699e-b19a-439b-9de7-a9bdaa27d1f5)
 
 
 ## RESULT
